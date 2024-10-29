@@ -1,0 +1,65 @@
+@startuml
+
+
+title "Add title here"
+skin rose
+
+
+
+/' Objects '/
+
+abstract class Animal {
+	+Animal(const std::string& name)
+	+~Animal()
+	#name : std::string
+	+{abstract} speak() : void {query}
+}
+
+
+class Cat {
+	+Cat(const std::string& name)
+	+speak() : void {query}
+}
+
+
+class Dog {
+	+Dog(const std::string& name)
+	+speak() : void {query}
+}
+
+
+class Zoo {
+	-animals : std::vector<std::unique_ptr<Animal>>
+	+addAnimal(std::unique_ptr<Animal> animal) : void
+	+makeAllSpeak() : void {query}
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+Animal <|-- Cat
+
+
+Animal <|-- Dog
+
+
+
+
+
+/' Aggregation relationships '/
+
+Zoo *-- Animal
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml
